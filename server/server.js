@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import transactionRoutes from "./routes/transactionRoutes.js";
 
 dotenv.config();
 console.log("JWT SECRET:", process.env.JWT_SECRET);
@@ -18,6 +19,7 @@ app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
     res.send("Expense Tracker API is running....");
 });
+app.use("/api/transactions", transactionRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
